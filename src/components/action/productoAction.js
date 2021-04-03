@@ -18,7 +18,7 @@ export const crearNuevoProductoAction = producto => {
         try {
 
             //Insertando en la API.
-            await clienteAxios.post('/prductos', producto);
+            await clienteAxios.post('/productos', producto);
 
             //Si todo sale bien actualizar el state.
             dispatch ( agregarProductoExito(producto) );
