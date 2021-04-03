@@ -1,3 +1,9 @@
+import {
+    AGREGAR_PRODUCTO,
+    AGREGAR_PRODUCTO_EXITO,
+    AGREGAR_PRODUCTO_ERROR 
+} from '../types';
+
 //Cada reducer tiene su propio state que cambiara y retornara ese cambio al store.
 const initialState = {
     productos: [],
@@ -8,6 +14,25 @@ const initialState = {
 const reducer = ( state = initialState, action ) => { //Si no se le pasa el state y la accion proveniente del store, toma el state inicial como valores.
     
     switch (action.type) {
+        case AGREGAR_PRODUCTO:
+            return {
+                ...state,
+                loading: action.payload
+            }
+        
+        case AGREGAR_PRODUCTO_EXITO:
+            return {
+                ...state,
+                loading: false,
+                productos: [...state.productos, action.payload]
+            }    
+        
+        case AGREGAR_PRODUCTO_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }        
     
         default:
             return state;
