@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 //Actions de Redux
-import { crearNuevoProductoAction } from './action/productoAction';
+import { crearNuevoProductoAction } from '../action/productoAction';
 
 const NuevoProducto = ({history}) => {              //history es un prop a los que los componentes dentro del router tienen acceso.
 
