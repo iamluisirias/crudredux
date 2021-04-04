@@ -23,7 +23,7 @@ const Productos = () => {
         //Funcion para cargar los productos
         const cargarProductos = () => dispatch( descargarProductosAction() ) 
         cargarProductos();
-
+        //eslint-disable-next-line
     }, [])
 
     return (

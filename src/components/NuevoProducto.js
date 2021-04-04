@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //Actions de Redux
 import { crearNuevoProductoAction } from '../action/productoAction';
+import { mostrarAlertaAction, ocultarAlertaAction } from '../action/alertaAction';
 
 const NuevoProducto = ({history}) => {              //history es un prop a los que los componentes dentro del router tienen acceso.
 
@@ -17,6 +18,8 @@ const NuevoProducto = ({history}) => {              //history es un prop a los q
     const cargando = useSelector( state => state.productos.loading );
     const error = useSelector( state => state.productos.error );
 
+    const alerta = useSelector( state => state.alertas.alerta );
+
     //Manda a llamar la funcion del productoAction.
     const agregarProducto = producto => dispatch( crearNuevoProductoAction(producto) )  //El dispatch se usa para llamar las funciones del action.
 
@@ -25,11 +28,21 @@ const NuevoProducto = ({history}) => {              //history es un prop a los q
         e.preventDefault();
 
         //Validar form
-        if (nombre.trim() === '' || precio <= 0) {
+        if (nombre.trim() === '' || Number(precio) <= 0) {
+            
+            //Si hay errores
+            const alerta = {
+                msg: 'Ambos campos son obligatorios',
+                clases: 'alert alert-danger text-center text-uppercase p3'
+            }
+
+            dispatch( mostrarAlertaAction(alerta) );
+
             return;
         }
 
-        //Si hay errores
+        //Si no hay errores
+        dispatch( ocultarAlertaAction() );
 
         //Crear el nuevo producto
         agregarProducto({
@@ -50,6 +63,10 @@ const NuevoProducto = ({history}) => {              //history es un prop a los q
                         <h2 className="text-center mb-4 font-weight-bold">
                             Agregar un producto nuevo
                         </h2>
+
+                        {
+                            alerta ? <p className={alerta.clases}>{alerta.msg}</p> : null
+                        }
 
                         <form
                             onSubmit={submitNuevoProducto}

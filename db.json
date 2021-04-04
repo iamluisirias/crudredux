@@ -24,6 +24,26 @@
       "nombre": "Sardinas",
       "precio": 500,
       "id": 13
+    },
+    {
+      "nombre": "Jarabe para la tos",
+      "precio": "1000",
+      "id": 14
+    },
+    {
+      "nombre": "Doggi",
+      "precio": 25,
+      "id": 15
+    },
+    {
+      "nombre": "Gatti",
+      "precio": 25,
+      "id": 16
+    },
+    {
+      "nombre": "7-up",
+      "precio": 18,
+      "id": 17
     }
   ]
 }
